@@ -245,10 +245,10 @@ const Home: React.FC = () => {
               className="mt-8"
             >
               <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent">
-                ¡Exacto! ¡Nos vamos a Italia! 🇮🇹✨
+                ¡Exacto! ¡Nos vamos a Italia!
               </h3>
               <p className="text-lg text-gray-700 mt-2">
-                ¡Feliz Cumpleaños, Sofiki! 🎉
+                ¡Feliz Cumpleaños mi vida! 🎉
               </p>
             </motion.div>
           )}
@@ -308,7 +308,7 @@ const Home: React.FC = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl max-w-lg w-full text-center relative z-10"
+          className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-12 shadow-2xl max-w-sm md:max-w-lg w-full text-center relative z-10 mx-4 md:mx-0"
         >
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
@@ -337,12 +337,12 @@ const Home: React.FC = () => {
               transition={{ delay: 0.6, type: "spring" }}
               className="absolute left-1/2 top-1/2 transform -translate-y-1/2 translate-x-8 ml-2"
             >
-              <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md border border-pink-200 relative">
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md border border-pink-200 relative max-w-[200px] md:max-w-none">
                 {/* Flecha apuntando a la imagen */}
                 <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-full">
                   <div className="w-0 h-0 border-t-[6px] border-b-[6px] border-r-[8px] border-transparent border-r-white/90"></div>
                 </div>
-                <p className="text-xs text-gray-600 whitespace-nowrap font-medium">
+                <p className="text-xs text-gray-600 whitespace-normal md:whitespace-nowrap font-medium">
                   {steps[currentStep].mensajeExtra}
                 </p>
               </div>
@@ -353,7 +353,7 @@ const Home: React.FC = () => {
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+            className="text-2xl md:text-4xl font-bold text-gray-800 mb-4"
           >
             {steps[currentStep].title}
           </motion.h1>
@@ -362,7 +362,7 @@ const Home: React.FC = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl text-gray-600 mb-6"
+            className="text-lg md:text-xl text-gray-600 mb-6"
           >
             {steps[currentStep].subtitle}
           </motion.p>
@@ -371,7 +371,7 @@ const Home: React.FC = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.6, type: "spring" }}
-            className="text-lg text-gray-700 mb-8 min-h-[3rem] flex items-center justify-center mx-15"
+            className="text-base md:text-lg text-gray-700 mb-8 min-h-[3rem] flex items-center justify-center mx-2 md:mx-15"
           >
             {steps[currentStep].content}
           </motion.div>
