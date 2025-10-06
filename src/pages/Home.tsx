@@ -245,11 +245,25 @@ const Home: React.FC = () => {
               className="mt-8"
             >
               <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent">
-                ¡Exacto! ¡Nos vamos a Italia!
+                ¡Exacto! ¡Nos vamos a Italia!✨
               </h3>
               <p className="text-lg text-gray-700 mt-2">
-                ¡Feliz Cumpleaños mi vida! 🎉
+                ¡Feliz Cumpleaños, mi vida! 🎉
               </p>
+              
+              {/* GIF de gato bailando cuando acierta */}
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 1, duration: 0.8, type: "spring" }}
+                className="mt-4 flex justify-center"
+              >
+                <img 
+                  src={getImagePath("gato_bailando.gif")} 
+                  alt="Gato bailando de felicidad"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-2xl shadow-lg"
+                />
+              </motion.div>
             </motion.div>
           )}
 
@@ -266,6 +280,20 @@ const Home: React.FC = () => {
                 <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2">
                   Mec! Prueba otra vez
                 </h3>
+                
+                {/* GIF de gato sufriendo cuando falla */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, type: "spring" }}
+                  className="mt-4 flex justify-center"
+                >
+                  <img 
+                    src={getImagePath("gato_sufriendo.gif")} 
+                    alt="Gato sufriendo por la respuesta incorrecta"
+                    className="w-28 h-28 md:w-32 md:h-32 rounded-2xl shadow-lg"
+                  />
+                </motion.div>
               </div>
             </motion.div>
           )}
