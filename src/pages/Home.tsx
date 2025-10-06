@@ -5,6 +5,17 @@ import ReactCountryFlag from 'react-country-flag'
 const Home: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [showSurprise, setShowSurprise] = useState(false)
+  const [userAnswer, setUserAnswer] = useState("")
+  const [showFlag, setShowFlag] = useState(false)
+
+  // Verificar si la respuesta es correcta
+  const checkAnswer = (answer: string) => {
+    if (answer.toLowerCase().trim() === "italia") {
+      setShowFlag(true)
+    } else {
+      setShowFlag(false)
+    }
+  }
 
   // Helper para rutas de imágenes
   const getImagePath = (imageName: string) => {
@@ -135,36 +146,50 @@ const Home: React.FC = () => {
           animate="visible"
           className="text-center max-w-2xl mx-auto px-6 relative z-10"
         >
-          {/* Bandera de Italia grande */}
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.5, duration: 1, type: "spring" }}
-            className="mb-8"
-          >
-            <ReactCountryFlag 
-              countryCode="IT" 
-              svg 
-              style={{ 
-                width: '12rem', 
-                height: '8rem',
-                borderRadius: '1rem',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
-              }} 
-            />
-          </motion.div>
+          {/* Bandera de Italia oculta detrás del interrogante */}
+          <div className="relative mb-8">
+            {/* Bandera de Italia */}
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ 
+                scale: showFlag ? 1 : 0, 
+                rotate: showFlag ? 0 : -180,
+                opacity: showFlag ? 1 : 0
+              }}
+              transition={{ duration: 1, type: "spring" }}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
+            >
+              <ReactCountryFlag 
+                countryCode="IT" 
+                svg 
+                style={{ 
+                  width: '12rem', 
+                  height: '8rem',
+                  borderRadius: '1rem',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+                }} 
+              />
+            </motion.div>
 
-          {/* Interrogante grande con gradiente */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8, type: "spring" }}
-            className="mb-8"
-          >
-            <h1 className="text-9xl md:text-[12rem] font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent leading-none">
-              ?
-            </h1>
-          </motion.div>
+            {/* Interrogante grande con gradiente */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ 
+                scale: showFlag ? 0 : 1, 
+                opacity: showFlag ? 0 : 1 
+              }}
+              transition={{ 
+                delay: showFlag ? 0 : 1, 
+                duration: 0.8, 
+                type: "spring" 
+              }}
+              className="relative z-10"
+            >
+              <h1 className="text-9xl md:text-[12rem] font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent leading-none">
+                ?
+              </h1>
+            </motion.div>
+          </div>
 
           {/* Frase */}
           <motion.h2
@@ -186,9 +211,31 @@ const Home: React.FC = () => {
             <input
               type="text"
               placeholder="tu respuesta aquí"
+              value={userAnswer}
+              onChange={(e) => {
+                setUserAnswer(e.target.value)
+                checkAnswer(e.target.value)
+              }}
               className="w-full px-6 py-4 text-lg text-center bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl shadow-lg focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-200 transition-all duration-300 placeholder-gray-400"
             />
           </motion.div>
+
+          {/* Mensaje de felicitación */}
+          {showFlag && (
+            <motion.div
+              initial={{ y: 30, opacity: 0, scale: 0.8 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+              className="mt-8"
+            >
+              <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent">
+                ¡Exacto! ¡Nos vamos a Italia! 🇮🇹✨
+              </h3>
+              <p className="text-lg text-gray-700 mt-2">
+                ¡Feliz Cumpleaños, Sofiki! 🎉
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     )
