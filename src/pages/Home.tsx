@@ -27,29 +27,33 @@ const Home: React.FC = () => {
       title: "Hey Sofiki",
       subtitle: "Preparada?",
       content: "Este año mi regalo viene envuelto en algunas líneas de código",
+      mensajeExtra: "",
       emoji: "🎁",
-      image: getImagePath("gatos_juntos.gif")
+      image: getImagePath("imagen_1.jpg")
     },
     {
       title: "¿Qué te pensabas, que te iba a hacer caso?",
       subtitle: "Sé que siempre dices que no te regale nada...",
       content: "Pero lo siento. Prepara el pasaporte...",
+      mensajeExtra: "",
       emoji: "✈️",
-      image: getImagePath("gato_bailando.gif")
+      image: getImagePath("imagen_2.jpg")
     },
     {
       title: "Pista #1",
       subtitle: "Muchas esculturas y templos",
       content: "Para que no olvides tu pasado con la Historia del Arte, a pesar de tu presente como flamante miembro del staff de OT",
+      mensajeExtra: "",
       emoji: "🏛️",
-      image: getImagePath("gato_sufriendo.gif")
+      image: getImagePath("imagen_3.jpg")
     },
     {
       title: "Pista #2",
       subtitle: "Un país con forma de bota",
       content: "Donde muchos sufren cada domingo de F1 con los resultados de cierto equipo",
+      mensajeExtra: "",
       emoji: "🥾",
-      image: getImagePath("gato_sufriendo.gif")
+      image: getImagePath("imagen_tarot.jpg")
     },
   ]
 
@@ -108,7 +112,7 @@ const Home: React.FC = () => {
 
   if (showSurprise) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 flex items-center justify-center overflow-hidden relative">
+      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 flex items-center justify-center overflow-hidden relative max-w-full md:overflow-x-hidden">
         {/* Fondo de imágenes esparcidas */}
         {backgroundImages.map((img, index) => (
           <motion.img
@@ -240,7 +244,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 flex items-center justify-center p-6 relative overflow-hidden max-w-full md:overflow-x-hidden">
       {/* Fondo de imágenes esparcidas */}
       {backgroundImages.map((img, index) => (
         <motion.img
