@@ -6,6 +6,16 @@ const Home: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [showSurprise, setShowSurprise] = useState(false)
 
+  // Imágenes de fondo esparcidas
+  const backgroundImages = [
+    { src: "/luke_durmiendo.jpg", top: "10%", left: "15%", rotate: -15 },
+    { src: "/luke_tocando_camara.jpg", top: "70%", left: "80%", rotate: 12 },
+    { src: "/marc_peluca.jpg", top: "20%", left: "75%", rotate: -8 },
+    { src: "/sofi_coche.jpg", top: "60%", left: "10%", rotate: 18 },
+    { src: "/sofi_marc.jpg", top: "40%", left: "85%", rotate: -12 },
+    { src: "/sofi_prueba_superada.jpg", top: "80%", left: "20%", rotate: 15 },
+  ]
+
   const steps = [
     {
       title: "Hey Sofiki",
@@ -92,12 +102,37 @@ const Home: React.FC = () => {
 
   if (showSurprise) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 flex items-center justify-center overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 flex items-center justify-center overflow-hidden relative">
+        {/* Fondo de imágenes esparcidas */}
+        {backgroundImages.map((img, index) => (
+          <motion.img
+            key={index}
+            src={img.src}
+            alt=""
+            initial={{ opacity: 0, scale: 0, rotate: 0 }}
+            animate={{ 
+              opacity: 0.15, 
+              scale: 1, 
+              rotate: img.rotate 
+            }}
+            transition={{ 
+              delay: index * 0.2,
+              duration: 1 
+            }}
+            className="absolute w-32 h-32 object-cover rounded-2xl shadow-lg"
+            style={{
+              top: img.top,
+              left: img.left,
+              zIndex: 0
+            }}
+          />
+        ))}
+        
         <motion.div
           variants={surpriseVariants}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto px-6"
+          className="text-center max-w-4xl mx-auto px-6 relative z-10"
         >
           <motion.div
             animate={floatingAnimation}
@@ -199,7 +234,32 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 flex items-center justify-center p-6 relative overflow-hidden">
+      {/* Fondo de imágenes esparcidas */}
+      {backgroundImages.map((img, index) => (
+        <motion.img
+          key={index}
+          src={img.src}
+          alt=""
+          initial={{ opacity: 0, scale: 0, rotate: 0 }}
+          animate={{ 
+            opacity: 0.1, 
+            scale: 1, 
+            rotate: img.rotate 
+          }}
+          transition={{ 
+            delay: index * 0.3,
+            duration: 1.2 
+          }}
+          className="absolute w-28 h-28 object-cover rounded-xl shadow-md"
+          style={{
+            top: img.top,
+            left: img.left,
+            zIndex: 0
+          }}
+        />
+      ))}
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
@@ -207,7 +267,7 @@ const Home: React.FC = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl max-w-lg w-full text-center"
+          className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl max-w-lg w-full text-center relative z-10"
         >
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
