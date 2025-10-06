@@ -4,7 +4,7 @@ import Home from '@/pages/Home'
 
 const AppRouter: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/PROYECTO-ESPECIAL">
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Aquí puedes agregar más rutas en el futuro */}
