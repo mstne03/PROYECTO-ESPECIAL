@@ -264,11 +264,8 @@ const Home: React.FC = () => {
             >
               <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2">
-                  🤔 Mmm... no es correcto
+                  Mec! Prueba otra vez
                 </h3>
-                <p className="text-red-700">
-                  ¡Inténtalo de nuevo! Piensa en el país de las pistas anteriores...
-                </p>
               </div>
             </motion.div>
           )}
