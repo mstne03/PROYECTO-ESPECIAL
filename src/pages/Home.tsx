@@ -6,14 +6,20 @@ const Home: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [showSurprise, setShowSurprise] = useState(false)
 
+  // Helper para rutas de imágenes
+  const getImagePath = (imageName: string) => {
+    const basePath = import.meta.env.PROD ? '/PROYECTO-ESPECIAL' : ''
+    return `${basePath}/${imageName}`
+  }
+
   // Imágenes de fondo esparcidas
   const backgroundImages = [
-    { src: "/luke_durmiendo.jpg", top: "25%", left: "15%", rotate: -15 },
-    { src: "/luke_tocando_camara.jpg", top: "65%", left: "80%", rotate: 12 },
-    { src: "/marc_peluca.jpg", top: "35%", left: "75%", rotate: -8 },
-    { src: "/sofi_coche.jpg", top: "55%", left: "10%", rotate: 18 },
-    { src: "/sofi_marc.jpg", top: "45%", left: "85%", rotate: -12 },
-    { src: "/sofi_prueba_superada.jpg", top: "70%", left: "20%", rotate: 15 },
+    { src: getImagePath("luke_durmiendo.jpg"), top: "25%", left: "15%", rotate: -15 },
+    { src: getImagePath("luke_tocando_camara.jpg"), top: "65%", left: "80%", rotate: 12 },
+    { src: getImagePath("marc_peluca.jpg"), top: "35%", left: "75%", rotate: -8 },
+    { src: getImagePath("sofi_coche.jpg"), top: "55%", left: "10%", rotate: 18 },
+    { src: getImagePath("sofi_marc.jpg"), top: "45%", left: "85%", rotate: -12 },
+    { src: getImagePath("sofi_prueba_superada.jpg"), top: "70%", left: "20%", rotate: 15 },
   ]
 
   const steps = [
@@ -22,28 +28,28 @@ const Home: React.FC = () => {
       subtitle: "Preparada?",
       content: "Este año mi regalo viene envuelto en algunas líneas de código",
       emoji: "🎁",
-      image: "/gatos_juntos.gif"
+      image: getImagePath("gatos_juntos.gif")
     },
     {
       title: "¿Qué te pensabas, que te iba a hacer caso?",
       subtitle: "Sé que siempre dices que no te regale nada...",
       content: "Pero lo siento. Prepara el pasaporte...",
       emoji: "✈️",
-      image: "/gato_bailando.gif"
+      image: getImagePath("gato_bailando.gif")
     },
     {
       title: "Pista #1",
       subtitle: "Muchas esculturas y templos",
       content: "Para que no olvides tu pasado con la Historia del Arte, a pesar de tu presente como flamante miembro del staff de OT",
       emoji: "🏛️",
-      image: "/gato_sufriendo.gif"
+      image: getImagePath("gato_sufriendo.gif")
     },
     {
       title: "Pista #2",
       subtitle: "Un país con forma de bota",
       content: "Donde muchos sufren cada domingo de F1 con los resultados de cierto equipo",
       emoji: "🥾",
-      image: "/gato_sufriendo.gif"
+      image: getImagePath("gato_sufriendo.gif")
     },
   ]
 
@@ -172,7 +178,7 @@ const Home: React.FC = () => {
               >
                 <div className="mb-3">
                   <img 
-                    src="/gato_sufriendo.gif" 
+                    src={getImagePath("gato_sufriendo.gif")} 
                     alt="Historia y Arte" 
                     className="w-16 h-16 mx-auto rounded-lg object-cover"
                   />
@@ -190,7 +196,7 @@ const Home: React.FC = () => {
               >
                 <div className="mb-3">
                   <img 
-                    src="/gato_bailando.gif" 
+                    src={getImagePath("gato_bailando.gif")} 
                     alt="Gastronomía" 
                     className="w-16 h-16 mx-auto rounded-lg object-cover"
                   />
@@ -208,7 +214,7 @@ const Home: React.FC = () => {
               >
                 <div className="mb-3">
                   <img 
-                    src="/gatos_juntos.gif" 
+                    src={getImagePath("gatos_juntos.gif")} 
                     alt="Juntos" 
                     className="w-16 h-16 mx-auto rounded-lg object-cover"
                   />
