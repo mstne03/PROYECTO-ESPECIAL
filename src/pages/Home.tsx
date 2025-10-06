@@ -8,9 +8,9 @@ const Home: React.FC = () => {
   const [userAnswer, setUserAnswer] = useState("")
   const [showFlag, setShowFlag] = useState(false)
 
-  // Verificar si la respuesta es correcta
-  const checkAnswer = (answer: string) => {
-    if (answer.toLowerCase().trim() === "italia") {
+  // Verificar si la respuesta es correcta al hacer submit
+  const handleSubmit = () => {
+    if (userAnswer.toLowerCase().trim() === "italia") {
       setShowFlag(true)
     } else {
       setShowFlag(false)
@@ -201,23 +201,34 @@ const Home: React.FC = () => {
             ¿Lo has adivinado?
           </motion.h2>
 
-          {/* Input */}
+          {/* Input y botón */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 2, duration: 0.8 }}
-            className="max-w-md mx-auto"
+            className="max-w-md mx-auto space-y-4"
           >
             <input
               type="text"
               placeholder="tu respuesta aquí"
               value={userAnswer}
-              onChange={(e) => {
-                setUserAnswer(e.target.value)
-                checkAnswer(e.target.value)
+              onChange={(e) => setUserAnswer(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit()
+                }
               }}
               className="w-full px-6 py-4 text-lg text-center bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl shadow-lg focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-200 transition-all duration-300 placeholder-gray-400"
             />
+            
+            <motion.button
+              onClick={handleSubmit}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full px-6 py-4 text-lg font-semibold text-white bg-gradient-to-r from-red-500 via-green-500 to-red-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform"
+            >
+              ¡Confirmar respuesta! 🎯
+            </motion.button>
           </motion.div>
 
           {/* Mensaje de felicitación */}
