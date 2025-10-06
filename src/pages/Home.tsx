@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       title: "Hey Sofiki",
       subtitle: "Preparada?",
       content: "Este año mi regalo viene envuelto en algunas líneas de código",
-      mensajeExtra: "",
+      mensajeExtra: "Mira que guapa sales eh",
       emoji: "🎁",
       image: getImagePath("imagen_1.jpg")
     },
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
       title: "¿Qué te pensabas, que te iba a hacer caso?",
       subtitle: "Sé que siempre dices que no te regale nada...",
       content: "Pero lo siento. Prepara el pasaporte...",
-      mensajeExtra: "",
+      mensajeExtra: "Hasta en blanco y negro! Joe...",
       emoji: "✈️",
       image: getImagePath("imagen_2.jpg")
     },
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       title: "Pista #1",
       subtitle: "Muchas esculturas y templos",
       content: "Para que no olvides tu pasado con la Historia del Arte, a pesar de tu presente como flamante miembro del staff de OT",
-      mensajeExtra: "",
+      mensajeExtra: "Tú y yo, después de que te haga este regalo",
       emoji: "🏛️",
       image: getImagePath("imagen_3.jpg")
     },
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
       title: "Pista #2",
       subtitle: "Un país con forma de bota",
       content: "Donde muchos sufren cada domingo de F1 con los resultados de cierto equipo",
-      mensajeExtra: "",
+      mensajeExtra: "Y le rezan a los dioses del tarot",
       emoji: "🥾",
       image: getImagePath("imagen_tarot.jpg")
     },
@@ -291,13 +291,31 @@ const Home: React.FC = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.3, type: "spring" }}
-            className="mb-6"
+            className="mb-6 relative flex justify-center items-center"
           >
             <img 
               src={steps[currentStep].image} 
               alt={steps[currentStep].title}
-              className="w-24 h-24 mx-auto rounded-2xl object-cover shadow-lg"
+              className="w-24 h-24 rounded-2xl object-cover shadow-lg"
             />
+            
+            {/* Mensaje flotante al lado de la imagen */}
+            <motion.div
+              initial={{ opacity: 0, x: -20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ delay: 0.6, type: "spring" }}
+              className="absolute left-1/2 top-1/2 transform -translate-y-1/2 translate-x-8 ml-2"
+            >
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md border border-pink-200 relative">
+                {/* Flecha apuntando a la imagen */}
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-full">
+                  <div className="w-0 h-0 border-t-[6px] border-b-[6px] border-r-[8px] border-transparent border-r-white/90"></div>
+                </div>
+                <p className="text-xs text-gray-600 whitespace-nowrap font-medium">
+                  {steps[currentStep].mensajeExtra}
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
           
           <motion.h1
