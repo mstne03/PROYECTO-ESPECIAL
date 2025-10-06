@@ -4,12 +4,19 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(),tailwindcss()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+export default defineConfig(({ command }) => {
+  const config: any = {
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
-  },
-  base: '/PROYECTO-ESPECIAL/',
+  }
+
+  if (command !== 'serve') {
+    config.base = '/PROYECTO-ESPECIAL/'
+  }
+
+  return config
 })
