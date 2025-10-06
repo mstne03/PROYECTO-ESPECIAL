@@ -253,7 +253,7 @@ const Home: React.FC = () => {
               className="mt-8"
             >
               <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent">
-                ¡Exacto! Tú y yo, Noviembre 2025: ¡nos vamos a Italia!✨
+                ¡Exacto! Tú y yo, este 2025: ¡nos vamos a Italia!✨
               </h3>
               <p className="text-lg text-gray-700 mt-2">
                 ¡Feliz Cumpleaños, mi vida! 🎉
