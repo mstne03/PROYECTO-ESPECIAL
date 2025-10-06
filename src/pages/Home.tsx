@@ -71,6 +71,14 @@ const Home: React.FC = () => {
       emoji: "🥾",
       image: getImagePath("imagen_tarot.jpg")
     },
+    {
+        title: "Pista #3",
+        subtitle: "Algún día, dominaré su cocina para hacerte las comidas más ricas",
+        content: "Y entonces sí que no podrás resistirte a mis encantos...",
+        mensajeExtra: "Aunque ya de por sí soy irresistible...",
+        emoji: "🍝",
+        image: getImagePath("marc_peluca.jpg")
+    }
   ]
 
   const nextStep = () => {
@@ -245,7 +253,7 @@ const Home: React.FC = () => {
               className="mt-8"
             >
               <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent">
-                ¡Exacto! ¡Nos vamos a Italia!✨
+                ¡Exacto! Tú y yo, Noviembre 2025: ¡nos vamos a Italia!✨
               </h3>
               <p className="text-lg text-gray-700 mt-2">
                 ¡Feliz Cumpleaños, mi vida! 🎉
