@@ -7,13 +7,18 @@ const Home: React.FC = () => {
   const [showSurprise, setShowSurprise] = useState(false)
   const [userAnswer, setUserAnswer] = useState("")
   const [showFlag, setShowFlag] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   // Verificar si la respuesta es correcta al hacer submit
   const handleSubmit = () => {
     if (userAnswer.toLowerCase().trim() === "italia") {
       setShowFlag(true)
+      setShowError(false)
     } else {
       setShowFlag(false)
+      setShowError(true)
+      // Ocultar el error después de 3 segundos
+      setTimeout(() => setShowError(false), 3000)
     }
   }
 
@@ -245,6 +250,26 @@ const Home: React.FC = () => {
               <p className="text-lg text-gray-700 mt-2">
                 ¡Feliz Cumpleaños, Sofiki! 🎉
               </p>
+            </motion.div>
+          )}
+
+          {/* Mensaje de error */}
+          {showError && !showFlag && (
+            <motion.div
+              initial={{ y: 30, opacity: 0, scale: 0.8 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -30, opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.6, type: "spring" }}
+              className="mt-8"
+            >
+              <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
+                <h3 className="text-xl md:text-2xl font-bold text-red-600 mb-2">
+                  🤔 Mmm... no es correcto
+                </h3>
+                <p className="text-red-700">
+                  ¡Inténtalo de nuevo! Piensa en el país de las pistas anteriores...
+                </p>
+              </div>
             </motion.div>
           )}
         </motion.div>
