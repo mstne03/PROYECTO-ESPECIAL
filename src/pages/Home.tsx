@@ -101,15 +101,6 @@ const Home: React.FC = () => {
     }
   }
 
-  const floatingAnimation = {
-    y: [0, -20, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut" as const
-    }
-  }
-
   if (showSurprise) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 flex items-center justify-center overflow-hidden relative max-w-full md:overflow-x-hidden">
@@ -121,7 +112,7 @@ const Home: React.FC = () => {
             alt=""
             initial={{ opacity: 0, scale: 0, rotate: 0 }}
             animate={{ 
-              opacity: 0.25, 
+              opacity: 0.15, 
               scale: 1, 
               rotate: img.rotate 
             }}
@@ -142,102 +133,62 @@ const Home: React.FC = () => {
           variants={surpriseVariants}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto px-6 relative z-10"
+          className="text-center max-w-2xl mx-auto px-6 relative z-10"
         >
+          {/* Bandera de Italia grande */}
           <motion.div
-            animate={floatingAnimation}
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.5, duration: 1, type: "spring" }}
             className="mb-8"
           >
-            <h1 className="text-7xl md:text-9xl font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-500 bg-clip-text text-transparent mb-4">
-              ¡ITALIA!
-            </h1>
-          </motion.div>
-          
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 1, duration: 0.8, type: "spring" }}
-            className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl mb-8"
-          >
-            <div className="flex justify-center items-center gap-4 mb-6">
-              <ReactCountryFlag countryCode="IT" svg style={{ width: '3rem', height: '3rem' }} />
-              <span className="text-4xl">✈️</span>
-              <ReactCountryFlag countryCode="IT" svg style={{ width: '3rem', height: '3rem' }} />
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              ¡2 Días en Italia! 🇮🇹
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-gray-600 mb-6">
-              Tu regalo de cumpleaños: Una aventura romántica juntos
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 text-lg text-gray-700">
-              <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.5 }}
-                className="bg-red-50 p-4 rounded-xl"
-              >
-                <div className="mb-3">
-                  <img 
-                    src={getImagePath("gato_sufriendo.gif")} 
-                    alt="Historia y Arte" 
-                    className="w-16 h-16 mx-auto rounded-lg object-cover"
-                  />
-                </div>
-                <span className="text-2xl block mb-2">🏛️</span>
-                <strong>Historia & Arte</strong>
-                <p className="text-sm">Museos, monumentos y cultura milenaria</p>
-              </motion.div>
-              
-              <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.7 }}
-                className="bg-green-50 p-4 rounded-xl"
-              >
-                <div className="mb-3">
-                  <img 
-                    src={getImagePath("gato_bailando.gif")} 
-                    alt="Gastronomía" 
-                    className="w-16 h-16 mx-auto rounded-lg object-cover"
-                  />
-                </div>
-                <span className="text-2xl block mb-2">🍝</span>
-                <strong>Gastronomía</strong>
-                <p className="text-sm">Pasta auténtica y gelato delicioso</p>
-              </motion.div>
-              
-              <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.9 }}
-                className="bg-blue-50 p-4 rounded-xl"
-              >
-                <div className="mb-3">
-                  <img 
-                    src={getImagePath("gatos_juntos.gif")} 
-                    alt="Juntos" 
-                    className="w-16 h-16 mx-auto rounded-lg object-cover"
-                  />
-                </div>
-                <span className="text-2xl block mb-2">💕</span>
-                <strong>Juntos</strong>
-                <p className="text-sm">Creando recuerdos inolvidables</p>
-              </motion.div>
-            </div>
+            <ReactCountryFlag 
+              countryCode="IT" 
+              svg 
+              style={{ 
+                width: '12rem', 
+                height: '8rem',
+                borderRadius: '1rem',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+              }} 
+            />
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5 }}
-            className="text-2xl text-gray-700 font-medium"
+          {/* Interrogante grande con gradiente */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1, duration: 0.8, type: "spring" }}
+            className="mb-8"
           >
-            ¡Feliz Cumpleaños, Sofia! 🎉✨
-          </motion.p>
+            <h1 className="text-9xl md:text-[12rem] font-bold bg-gradient-to-r from-red-500 via-green-500 to-red-600 bg-clip-text text-transparent leading-none">
+              ?
+            </h1>
+          </motion.div>
+
+          {/* Frase */}
+          <motion.h2
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="text-3xl md:text-4xl font-bold text-gray-800 mb-8"
+          >
+            ¿Lo has adivinado?
+          </motion.h2>
+
+          {/* Input */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2, duration: 0.8 }}
+            className="max-w-md mx-auto"
+          >
+            <input
+              type="text"
+              placeholder="tu respuesta aquí"
+              className="w-full px-6 py-4 text-lg text-center bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl shadow-lg focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-200 transition-all duration-300 placeholder-gray-400"
+            />
+          </motion.div>
         </motion.div>
       </div>
     )
