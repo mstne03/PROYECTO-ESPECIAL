@@ -8,12 +8,12 @@ const Home: React.FC = () => {
 
   // Imágenes de fondo esparcidas
   const backgroundImages = [
-    { src: "/luke_durmiendo.jpg", top: "10%", left: "15%", rotate: -15 },
-    { src: "/luke_tocando_camara.jpg", top: "70%", left: "80%", rotate: 12 },
-    { src: "/marc_peluca.jpg", top: "20%", left: "75%", rotate: -8 },
-    { src: "/sofi_coche.jpg", top: "60%", left: "10%", rotate: 18 },
-    { src: "/sofi_marc.jpg", top: "40%", left: "85%", rotate: -12 },
-    { src: "/sofi_prueba_superada.jpg", top: "80%", left: "20%", rotate: 15 },
+    { src: "/luke_durmiendo.jpg", top: "25%", left: "15%", rotate: -15 },
+    { src: "/luke_tocando_camara.jpg", top: "65%", left: "80%", rotate: 12 },
+    { src: "/marc_peluca.jpg", top: "35%", left: "75%", rotate: -8 },
+    { src: "/sofi_coche.jpg", top: "55%", left: "10%", rotate: 18 },
+    { src: "/sofi_marc.jpg", top: "45%", left: "85%", rotate: -12 },
+    { src: "/sofi_prueba_superada.jpg", top: "70%", left: "20%", rotate: 15 },
   ]
 
   const steps = [
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
             alt=""
             initial={{ opacity: 0, scale: 0, rotate: 0 }}
             animate={{ 
-              opacity: 0.15, 
+              opacity: 0.25, 
               scale: 1, 
               rotate: img.rotate 
             }}
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
               delay: index * 0.2,
               duration: 1 
             }}
-            className="absolute w-32 h-32 object-cover rounded-2xl shadow-lg"
+            className="absolute w-40 h-40 object-cover rounded-2xl shadow-lg"
             style={{
               top: img.top,
               left: img.left,
@@ -243,7 +243,7 @@ const Home: React.FC = () => {
           alt=""
           initial={{ opacity: 0, scale: 0, rotate: 0 }}
           animate={{ 
-            opacity: 0.1, 
+            opacity: 0.2, 
             scale: 1, 
             rotate: img.rotate 
           }}
@@ -251,7 +251,7 @@ const Home: React.FC = () => {
             delay: index * 0.3,
             duration: 1.2 
           }}
-          className="absolute w-28 h-28 object-cover rounded-xl shadow-md"
+          className="absolute w-36 h-36 object-cover rounded-xl shadow-md"
           style={{
             top: img.top,
             left: img.left,
